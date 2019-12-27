@@ -6,6 +6,7 @@ const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
 const app = express()
+const port = process.env.PORT || 3000
 
 // Paths for Express and handlebars configs
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -77,8 +78,8 @@ app.get('*', (request, response) => {
     response.render('error', { message: "Page not found. You're killing me Smalls..."})
 })
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000')
+app.listen(port, () => {
+    console.log('Server is up on port ' + port)
 })
 
 //? Can I attach to an existing website?
