@@ -6,6 +6,7 @@ const search = document.querySelector('#inputLocation')
 const msgLocation = document.querySelector('#txtLocation')
 const msgWeather = document.querySelector('#txtWeather')
 const msgForecast = document.querySelector('#txtForecast')
+const msgWind = document.querySelector('#txtWind')
 
 
 
@@ -17,6 +18,7 @@ weatherForm.addEventListener('submit', (e) => {
     msgLocation.textContent = 'Geolocating ' + loc
     msgWeather.textContent = ''
     msgForecast.textContent = ''
+    msgWind.textContent = ''
     fetch('/weather?location='+loc).then((response) => {
     response.json().then((data) => {
         if (data.error) {
@@ -26,7 +28,8 @@ weatherForm.addEventListener('submit', (e) => {
             console.log(data)
             msgLocation.textContent = data.location
             msgWeather.textContent = data.weather
-            msgForecast.textContent = data.forecast    
+            msgForecast.textContent = data.forecast 
+            msgWind.textContent = data.wind   
         }
     })
 })

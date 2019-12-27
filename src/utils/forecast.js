@@ -13,6 +13,8 @@ const forecast = (latitude, longitude, callback) => {
                 todays : body.daily.data[0].summary,
                 temp_now : body.currently.temperature,
                 rain_pct : body.currently.precipProbability,
+                wind_speed: body.currently.windSpeed,
+                wind_gust: body.currently.windGust
             }
             const { todays, temp_now, rain_pct} = data
             callback(undefined, data)

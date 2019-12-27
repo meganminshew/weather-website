@@ -55,14 +55,15 @@ app.get('/weather', (request,response) => {
             return response.send({ error })
         }
         console.log('Checking weather for ' + location)
-        forecast(latitude, longitude, (error, {todays, temp_now, rain_pct}) => {
+        forecast(latitude, longitude, (error, {todays, temp_now, rain_pct, wind_speed, wind_gust}) => {
             if (error) {
                 return response.send({error: error})
             }
             response.send({
                 location: 'Checking weather for ' + location,
                 weather: 'Todays weather is ' + todays,
-                forecast: 'Current temp is ' + temp_now + ' degrees (F) with a ' + rain_pct + '% chance of rain.'
+                forecast: 'Current temp is ' + temp_now + ' degrees (F) with a ' + rain_pct + '% chance of rain.',
+                wind: 'Wind speeds are ' + wind_speed + ' MPH with gusts up to ' + wind_gust + ' MPH.'
             })
         }
         )      
